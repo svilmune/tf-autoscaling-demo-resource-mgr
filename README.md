@@ -10,8 +10,8 @@ Running this in OCI Resource Manager creates following resources:
 * Nat Gateway
 * Internet Gateway
 * Public load balancer and a backend set which has instance pool as destination
-* Two public subnets for the load balancer and jump server including route table and security list (ports 22 and 80 are open)
-* One private subnet for the instance pool instances with route table and security list (ports 22 and 80 are open)
+* Two public subnets for the load balancer (ports 22 and 80 are open)
+* One private subnet for the instance pool instances (ports 22 and 80 are open)
 * Public & Private routetables - Public RT will have a route to Internet Gateway and Private RT route to NAT Gateway
 * Public & Private securitylists - Both allow traffic to ports 22 and 80 only. By default they allow traffic from any source but this can be modified to allow only traffic from CIDR block deemed necessary
 * One compute instance with the smallest shape to act as a jump server and a 7.6 linux image - the instance public IP will be displayed in the end. 
