@@ -343,6 +343,9 @@ resource "oci_core_instance" "CreateInstance" {
   subnet_id = "${oci_core_subnet.CreatePublicSubnet.id}"
 }
 
+// Create Instance Configuration 
+
+          
 resource "oci_core_instance_configuration" "CreateInstanceConfiguration" {
   compartment_id = "${oci_identity_compartment.CreateCompartment.id}"
   display_name   = "${var.instance_configuration_name}"
@@ -374,6 +377,8 @@ resource "oci_core_instance_configuration" "CreateInstanceConfiguration" {
   }
 }
 
+// Create Instance Pool minimum 2 servers, maximum 4, initial 2          
+          
 resource "oci_core_instance_pool" "CreateInstancePool" {
   compartment_id            = "${oci_identity_compartment.CreateCompartment.id}"
   instance_configuration_id = "${oci_core_instance_configuration.CreateInstanceConfiguration.id}"
@@ -395,6 +400,8 @@ resource "oci_core_instance_pool" "CreateInstancePool" {
   }
 }
 
+// Create autoscaling configuration   
+          
 resource "oci_autoscaling_auto_scaling_configuration" "CreateAutoScalingConfiguration" {
   compartment_id       = "${oci_identity_compartment.CreateCompartment.id}"
   cool_down_in_seconds = "${var.autoscaling_cooldown_in_seconds}"
